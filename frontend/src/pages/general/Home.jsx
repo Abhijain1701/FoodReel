@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../../context/UserAuthContext';
+import { API_URL } from '../../config/api';
 
 const demoReels = [
   {
@@ -62,7 +63,7 @@ const Home = () => {
 
   const handleLogout = async () => {
     try{
-      const response = await axios.get("http://localhost:3000/api/auth/user/logout", {withCredentials:true});
+      const response = await axios.get(`${API_URL}/api/auth/user/logout`, {withCredentials:true});
       console.log("response", response.data);
       logout();
       navigate("/user/login");
@@ -74,7 +75,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/food", { withCredentials: true })
+    axios.get(`${API_URL}/api/food`, { withCredentials: true })
       .then(response => {
         console.log("response of home", response.data.foodItems);
         setReels(response.data.foodItems);
@@ -88,7 +89,7 @@ const Home = () => {
     try {
       console.log("food id ",item._id)
 
-      const response=await axios.post("http://localhost:3000/api/food/like",{foodId: item._id},{withCredentials:true})
+      const response=await axios.post(`${API_URL}/api/food/like`,{foodId: item._id},{withCredentials:true})
 
       if(response.data.like){
         console.log("Video liked")
@@ -107,7 +108,7 @@ const Home = () => {
   {
     try {
       console.log("food id ",item._id)
-      const response=await axios.post("http://localhost:3000/api/food/save",{foodId: item._id},{withCredentials:  true})
+      const response=await axios.post(`${API_URL}/api/food/save`,{foodId: item._id},{withCredentials:  true})
 
       if(response.data.save){
         console.log("video bookmarked");

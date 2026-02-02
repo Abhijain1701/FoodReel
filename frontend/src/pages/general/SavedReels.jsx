@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReelViewer from '../../components/ReelViewer';
+import { API_URL } from '../../config/api';
 
 const demoSavedReels = [
   {
@@ -27,7 +28,7 @@ const SavedReels = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/food/save", { withCredentials: true })
+    axios.get(`${API_URL}/api/food/save`, { withCredentials: true })
       .then(response => {
         setVideos(response.data.savedFoods)
         console.log("respon of saved ", response.data.savedFoods)

@@ -7,6 +7,7 @@ import Button from '../../components/ui/Button';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { useUserAuth } from '../../context/UserAuthContext';
+import { API_URL } from '../../config/api';
 
 function UserLogin() {
 
@@ -22,7 +23,7 @@ function UserLogin() {
     const password=e.target.password.value;
 
     try {
-      const response=await axios.post("http://localhost:3000/api/auth/user/login",{
+      const response=await axios.post(`${API_URL}/api/auth/user/login`,{
            email,
            password
       },{

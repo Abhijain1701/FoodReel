@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import './CreateFood.css';
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import { API_URL } from '../../config/api';
 
 const CreateFood = () => {
   const { user, logout } = useAuth();
@@ -32,7 +33,7 @@ const CreateFood = () => {
   const handleLogout = async () => {
     // Write your logout logic here
    try{
-     const response=await axios.get("http://localhost:3000/api/auth/food-partner/logout",{withCredentials:true})
+     const response=await axios.get(`${API_URL}/api/auth/food-partner/logout`,{withCredentials:true})
     console.log(response)
     logout()
     navigate('/food-partner/login')
@@ -104,7 +105,7 @@ const CreateFood = () => {
     formData.append('description',description) 
     formData.append('video', videoFile)
 
-    const response=await axios.post("http://localhost:3000/api/food",formData,{
+    const response=await axios.post(`${API_URL}/api/food`,formData,{
       withCredentials:true,
     })
      console.log(response.data)

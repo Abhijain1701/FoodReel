@@ -5,6 +5,7 @@ import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import { API_URL } from '../../config/api';
 
 function UserRegister() {
 
@@ -20,7 +21,7 @@ function UserRegister() {
     console.log("full",fullName);
 
     try {
-      const response=await axios.post("http://localhost:3000/api/auth/user/register",{
+      const response=await axios.post(`${API_URL}/api/auth/user/register`,{
         fullName,
         email,
         password

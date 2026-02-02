@@ -2,13 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './ReelViewer.css';
+import { API_URL } from '../config/api';
 
 const ReelViewer = ({ reel, onClose, onLike, onSave }) => {
 
   const handleLike = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/food/like",
+        `${API_URL}/api/food/like`,
         { foodId: reel._id },
         { withCredentials: true }
       );
@@ -21,7 +22,7 @@ const ReelViewer = ({ reel, onClose, onLike, onSave }) => {
   const handleSave = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/food/save",
+        `${API_URL}/api/food/save`,
         { foodId: reel._id },
         { withCredentials: true }
       );

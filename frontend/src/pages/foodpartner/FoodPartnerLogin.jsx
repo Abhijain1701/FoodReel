@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { API_URL } from '../../config/api';
 
 function FoodPartnerLogin() {
 
@@ -23,7 +24,7 @@ function FoodPartnerLogin() {
 
     try{
 
-      const response=await axios.post("http://localhost:3000/api/auth/food-partner/login",{
+      const response=await axios.post(`${API_URL}/api/auth/food-partner/login`,{
         email,
         password
       },{

@@ -5,6 +5,7 @@ import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import { API_URL } from '../../config/api';
 
 function FoodPartnerRegister() {
 
@@ -21,7 +22,7 @@ function FoodPartnerRegister() {
     const address=e.target.address.value;
 
     try {
-      const response=await axios.post("http://localhost:3000/api/auth/food-partner/register",{
+      const response=await axios.post(`${API_URL}/api/auth/food-partner/register`,{
         name: businessName,
       
         phone,

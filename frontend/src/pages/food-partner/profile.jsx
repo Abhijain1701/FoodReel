@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import './profile.css';
 import axios from 'axios';
 import ReelViewer from '../../components/ReelViewer';
+import { API_URL } from '../../config/api';
 
 const FoodPartnerProfile = () => {
 
@@ -12,7 +13,7 @@ const FoodPartnerProfile = () => {
   const [selectedReel, setSelectedReel] = useState(null)
 
   useEffect(()=>{
-    axios.get(`http://localhost:3000/api/food-partner/${id}`,{
+    axios.get(`${API_URL}/api/food-partner/${id}`,{
         withCredentials :true
     })
     .then(response=>{

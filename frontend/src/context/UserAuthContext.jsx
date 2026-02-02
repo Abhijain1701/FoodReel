@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import axios from 'axios';
+import { API_URL } from '../config/api';
 
 const UserAuthContext = createContext(null);
 
@@ -16,7 +17,7 @@ export const UserAuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post("http://localhost:3000/api/auth/user/logout", {}, {
+      await axios.post(`${API_URL}/api/auth/user/logout`, {}, {
         withCredentials: true
       });
     } catch (err) {
